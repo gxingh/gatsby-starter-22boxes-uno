@@ -1,11 +1,35 @@
-import React from "react"
+import React, {useEffect, useState} from "react"
 import { rhythm } from "../utils/typography"
 import Header from "./Header"
-import useWindowDimens from "../utils/useWindowDimensions"
 
-const Layout = ({ location, title, children }) => {
-  // const rootPath = `${__PATH_PREFIX__}/`
-  const {width, height} = useWindowDimens();
+function getWindowDimensions() {
+  const { innerWidth: width, innerHeight: height } = window;
+  return {
+    width,
+    height
+  };
+}
+
+function useWindowDimensions() {
+  const [windowDimensions, setWindowDimensions] = useState(
+    getWindowDimensions()
+  );
+
+  useEffect(() => {
+    function handleResize() {
+      setWindowDimensions(getWindowDimensions());
+    }
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  return windowDimensions;
+}
+
+function Layout({ location, title, children }){
+  const rootPath = `${__PATH_PREFIX__}/`
+  const {width, height} = useWindowDimensions();
 
   return (
     <div
