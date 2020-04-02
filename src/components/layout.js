@@ -1,68 +1,32 @@
 import React from "react"
-import { Link } from "gatsby"
-
-import { rhythm, scale } from "../utils/typography"
+import { rhythm } from "../utils/typography"
+import Header from "./Header"
+import useWindowDimens from "../utils/useWindowDimensions"
 
 const Layout = ({ location, title, children }) => {
-  const rootPath = `${__PATH_PREFIX__}/`
-  let header
+  // const rootPath = `${__PATH_PREFIX__}/`
+  const {width, height} = useWindowDimens();
 
-  if (location.pathname === rootPath) {
-    header = (
-      <h1
-        style={{
-          ...scale(1.5),
-          marginBottom: rhythm(1.5),
-          marginTop: 0,
-        }}
-      >
-        <Link
-          style={{
-            boxShadow: `none`,
-            color: `inherit`,
-          }}
-          to={`/`}
-        >
-          {title}
-        </Link>
-      </h1>
-    )
-  } else {
-    header = (
-      <h3
-        style={{
-          fontFamily: `Montserrat, sans-serif`,
-          marginTop: 0,
-        }}
-      >
-        <Link
-          style={{
-            boxShadow: `none`,
-            color: `inherit`,
-          }}
-          to={`/`}
-        >
-          {title}
-        </Link>
-      </h3>
-    )
-  }
   return (
     <div
       style={{
         marginLeft: `auto`,
         marginRight: `auto`,
-        maxWidth: rhythm(24),
-        padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
+        maxWidth: rhythm(32),
+        padding: `${rhythm(1)} ${rhythm(2/4)} 0 ${rhythm(2/4)} `,
+        fontFamily:`Montserrat`
       }}
     >
-      <header>{header}</header>
-      <main>{children}</main>
-      <footer>
-        © {new Date().getFullYear()}, Built with
-        {` `}
-        <a href="https://www.gatsbyjs.org">Gatsby</a>
-      </footer>
+      <header> <Header location={location}/> </header>
+      <main style={{
+        minHeight:height,
+        border: `0.5px solid #EEEEEE`,
+        borderBottom:`0px`,
+        borderRadius:`10px 10px 0px 0px`,
+        paddingLeft:`30px`,
+        paddingRight:`30px`,
+        paddingTop:`-20px`
+      }}>{children}</main>
     </div>
   )
 }

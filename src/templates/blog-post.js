@@ -1,23 +1,24 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
-
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { rhythm, scale } from "../utils/typography"
 
-const BlogPostTemplate = ({ data, pageContext, location }) => {
-  const post = data.markdownRemark
-  const siteTitle = data.site.siteMetadata.title
-  const { previous, next } = pageContext
+class BlogPostTemplate extends React.Component {
+  render() {
+    const post = this.props.data.markdownRemark
+    const siteTitle = this.props.data.site.siteMetadata.title
+    const { previous, next } = this.props.pageContext
+
 
   return (
-    <Layout location={location} title={siteTitle}>
+    <Layout location={this.props.location} title={siteTitle}>
       <SEO
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
       />
-      <article>
+      <article style={{padding:`0px 15px 15px 15px`}}>
         <header>
           <h1
             style={{
@@ -40,10 +41,11 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
         <section dangerouslySetInnerHTML={{ __html: post.html }} />
         <hr
           style={{
-            marginBottom: rhythm(1),
+            marginBottom: rhythm(2),
+            marginTop:rhythm(2)
           }}
         />
-        <footer>
+        <footer >
           <Bio />
         </footer>
       </article>
@@ -76,6 +78,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
       </nav>
     </Layout>
   )
+}
 }
 
 export default BlogPostTemplate
