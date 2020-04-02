@@ -1,35 +1,9 @@
-import React, {useEffect, useState} from "react"
+import React from "react"
 import { rhythm } from "../utils/typography"
 import Header from "./Header"
 
-function getWindowDimensions() {
-  const { innerWidth: width, innerHeight: height } = window;
-  return {
-    width,
-    height
-  };
-}
-
-function useWindowDimensions() {
-  const [windowDimensions, setWindowDimensions] = useState(
-    getWindowDimensions()
-  );
-
-  useEffect(() => {
-    function handleResize() {
-      setWindowDimensions(getWindowDimensions());
-    }
-
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  return windowDimensions;
-}
-
 function Layout({ location, title, children }){
   const rootPath = `${__PATH_PREFIX__}/`
-  const {width, height} = useWindowDimensions();
 
   return (
     <div
@@ -43,7 +17,7 @@ function Layout({ location, title, children }){
     >
       <header> <Header location={location}/> </header>
       <main style={{
-        minHeight:height,
+        minHeight:`calc(100vh - 120px)`,
         border: `0.5px solid #EEEEEE`,
         borderBottom:`0px`,
         borderRadius:`10px 10px 0px 0px`,
