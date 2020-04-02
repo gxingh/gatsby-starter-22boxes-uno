@@ -33,8 +33,12 @@ exports.createPages = async ({ graphql, actions }) => {
   }
 
   // Create blog posts pages.
-  const posts = result.data.allMarkdownRemark.edges.filter((edge)=>(edge.node.frontmatter.template==="post"));
-  const work = result.data.allMarkdownRemark.edges.filter((edge)=>(edge.node.frontmatter.template==="work"));
+  const posts = result.data.allMarkdownRemark.edges.filter(
+    edge => edge.node.frontmatter.template === "post"
+  )
+  const work = result.data.allMarkdownRemark.edges.filter(
+    edge => edge.node.frontmatter.template === "work"
+  )
   const blogPost = path.resolve(`./src/templates/blog-post.js`)
 
   posts.forEach((post, index) => {
@@ -52,14 +56,14 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   })
 
-  const workPage = path.resolve('./src/templates/work.js');
-  work.forEach((work)=>{
+  const workPage = path.resolve("./src/templates/work.js")
+  work.forEach(work => {
     createPage({
-      path:work.node.fields.slug,
-      component:workPage,
-      context:{
-        slug:work.node.fields.slug
-      }
+      path: work.node.fields.slug,
+      component: workPage,
+      context: {
+        slug: work.node.fields.slug,
+      },
     })
   })
 }

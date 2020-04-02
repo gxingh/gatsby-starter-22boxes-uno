@@ -16,7 +16,7 @@ class WorkTemplate extends React.Component {
           title={post.frontmatter.title}
           description={post.frontmatter.description || post.excerpt}
         />
-        <article style={{padding:`0px 15px 15px 15px`}}>
+        <article style={{ padding: `0px 15px 15px 15px` }}>
           <header>
             <h1
               style={{
@@ -31,7 +31,7 @@ class WorkTemplate extends React.Component {
                 ...scale(-1 / 5),
                 display: `block`,
                 marginBottom: rhythm(1),
-                fontStyle:'italic'
+                fontStyle: "italic",
               }}
             >
               {post.frontmatter.category}
@@ -39,14 +39,14 @@ class WorkTemplate extends React.Component {
           </header>
           <section dangerouslySetInnerHTML={{ __html: post.html }} />
           <hr
-          style={{
-            marginBottom: rhythm(2),
-            marginTop:rhythm(2)
-          }}
-        />
-        <footer >
-          <Bio />
-        </footer>
+            style={{
+              marginBottom: rhythm(2),
+              marginTop: rhythm(2),
+            }}
+          />
+          <footer>
+            <Bio />
+          </footer>
         </article>
       </Layout>
     )

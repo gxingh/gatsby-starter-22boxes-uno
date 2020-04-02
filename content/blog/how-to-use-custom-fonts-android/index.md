@@ -11,12 +11,12 @@ Given your design requires the fonts in your app to have some specific font, thi
 
 This is better done at the start of the project, otherwise you're looking at a lot of refactoring.
 
-* First and foremost is to put the font file in your assets folder of your app. 
-If you can't find one, just go ahead and create one in the 'main' folder of your app.
-<img src="screen1.png">
-<br/>
-<img src="screen2.png">
-* Then create a new class in your app that extends TextView class.
+- First and foremost is to put the font file in your assets folder of your app.
+  If you can't find one, just go ahead and create one in the 'main' folder of your app.
+  <img src="screen1.png">
+  <br/>
+  <img src="screen2.png">
+- Then create a new class in your app that extends TextView class.
 
 ```java
 public class CustomTextView extends android.support.v7.widget.AppCompatTextView {
@@ -42,8 +42,8 @@ public class CustomTextView extends android.support.v7.widget.AppCompatTextView 
 
 ```
 
-* Here in *setFont()* method you can see that we're setting out custom font to our text view class.
-* Then in your xml files, use this class as follows:
+- Here in _setFont()_ method you can see that we're setting out custom font to our text view class.
+- Then in your xml files, use this class as follows:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -65,7 +65,6 @@ public class CustomTextView extends android.support.v7.widget.AppCompatTextView 
 
 </LinearLayout>
 ```
-   
-      
-* The result:
-<img src="screen3.png">
+
+- The result:
+  <img src="screen3.png">
